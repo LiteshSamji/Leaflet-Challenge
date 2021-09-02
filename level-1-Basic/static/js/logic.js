@@ -12,7 +12,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
 	accessToken: API_KEY
 }).addTo(myMap);
 
-var url_earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+var url_earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 // Function to determine circle color based on the magnitude 
 function chooseColor(magnitude) {
@@ -79,7 +79,24 @@ d3.json(url_earthquakes).then(function(data) {
             layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><span>Magnitude: ${feature.properties.mag}</span>`)
         }
     }).addTo(myMap);
+    
+    // Create a legend
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function (map) {
 
+        var div = L.DomUtil.create('div', 'info legend'),
+            mag = [0, 1, 2, 3, 4, 5]
+     
+        div.innerHTML += "<h4>Magnitude Level</h4><hr>"
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < mag.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
+                mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '<br>' : '+');
+     }
+     return div;
+ };
+ legend.addTo(myMap);
 });
 
 
