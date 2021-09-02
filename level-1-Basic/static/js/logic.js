@@ -11,3 +11,14 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
     id: "light-v10",
 	accessToken: API_KEY
 }).addTo(myMap);
+
+var url_earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+
+// Grab data with d3
+d3.json(url_earthquakes).then(function(data) {
+   
+
+});
+
+
+
