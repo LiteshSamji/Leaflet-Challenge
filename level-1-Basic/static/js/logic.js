@@ -62,14 +62,14 @@ function getRadius(magnitude){
 // Grab data with d3
 d3.json(url_earthquakes).then(function(data) {
     // Create a GeoJSON layer containing the features array
-    // Each feature a popup describing the place and time of the earthquake
+    // Each feature a popup describing the place and magnitude
     L.geoJson(data,{
         pointToLayer: function (feature, latlng) {
             // Create a circle marker
             return L.circleMarker(latlng, {
-                //radius: getRadius(feature.properties.mag), // different radius for different magnitude
+                radius: getRadius(feature.properties.mag), // different radius for different magnitude
                 fillColor: chooseColor(feature.properties.mag), // different circle colors for different magnitude
-                color: "#000",
+                color: "black",
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
