@@ -21,4 +21,31 @@ function createMap(GeoJsonLayer, platesLayer){
         accessToken: API_KEY
     });
 
+    // Create a baseMaps object
+    var baseMaps = {
+        Satellite: satelliteMap,
+        Outdoors: outdoorsMap,
+        Grayscale: grayScaleMap
+    };
+
+    // Create an overlayMaps object
+    var overlayMaps = {
+        'Fault Lines': platesLayer,
+        Earthquakes: GeoJsonLayer
+    }
+
+    // Define a myMap object
+    var myMap = L.map('map',{
+        center:[37.0902, -95.7129],
+        zoom: 5,
+        layers: [satelliteMap, platesLayer, GeoJsonLayer]
+    })
+        
+    // Pass our map layers into our layer control
+    // Add the layer control to the map
+    L.control.layers(baseMaps, overlayMaps, {
+        collapsed: false
+    }).addTo(myMap);
+    
+    return myMap;
 }
