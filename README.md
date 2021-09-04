@@ -1,4 +1,4 @@
-# Leaflet-Challenge((Images/leaflet.png)
+# Leaflet-Challenge(Images/leaflet.png)
 
 ## Level-1: Basic Visualization
 
