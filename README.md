@@ -15,7 +15,7 @@ The visualzation includes
 
    * A legend that will provide context for your map data.
 
-![Step-1](Images/Leaflet_Step_1.png)
+![Step-1](Images/2-BasicMap.png)
 
 The Level-1 page can be accessed [here](https://liteshsamji.github.io/Leaflet-Challenge/level-1-Basic/index.html)
 
@@ -31,6 +31,6 @@ The Level-1 page can be accessed [here](https://liteshsamji.github.io/Leaflet-Ch
 * An overlay map which contains plates layer and geoJSON layer was also added.
 * Layer controls to our map was created.
 
-![Step-2](Images/Leaflet_Step_2.png)
+![Step-2](Images/5-Advanced.png)
 
 The Level-2 page can be accessed [here](https://jua91.github.io/Leaflet-Challenge/level-2-Advanced/index.html)
