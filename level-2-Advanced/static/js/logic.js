@@ -63,7 +63,7 @@ function createLegend(map){
         // loop and generate a label with a colored square for each interval
         for (var i = 0; i < mag.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColor(mag[i] + 1) + '"></i> ' +
+                '<i style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
                 mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '<br>' : '+');
         }
         return div;
@@ -121,8 +121,8 @@ function createGeoJsonLayer(data){
     var GeoJsonLayer = L.geoJson(data,{
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
-                //radius: getRadius(feature.properties.mag),
-                //fillColor: getColor(feature.properties.mag),
+                radius: getRadius(feature.properties.mag),
+                fillColor: chooseColor(feature.properties.mag),
                 color: "#000",
                 weight: 1,
                 opacity: 1,
