@@ -1,4 +1,5 @@
-# Leaflet-Challenge ![leaf](Images/leaflet.png)
+# Leaflet-Challenge 
+
 ## Level-1: Basic Visualization
 
 ### DataSet
@@ -32,4 +33,4 @@ The Level-1 page can be accessed [here](https://liteshsamji.github.io/Leaflet-Ch
 
 ![Step-2](Images/5-Advanced.png)
 
-The Level-2 page can be accessed [here](https://jua91.github.io/Leaflet-Challenge/level-2-Advanced/index.html)
+The Level-2 page can be accessed [here](https://liteshsamji.github.io/Leaflet-Challenge/level-2-Advanced/index.html)

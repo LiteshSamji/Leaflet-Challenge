@@ -50,27 +50,6 @@ function createMap(GeoJsonLayer, platesLayer){
     return myMap;
 }
 
-// Function for creating legend
-function createLegend(map){
-    // Create a legend
-    var legend = L.control({position: 'bottomright'});
-
-    legend.onAdd = function (map) {
-
-        var div = L.DomUtil.create('div', 'info legend'),
-            mag = [0,1, 2, 3, 4, 5]
-        div.innerHTML += "<h4>Magnitude Level</h4><hr>"
-        // loop and generate a label with a colored square for each interval
-        for (var i = 0; i < mag.length; i++) {
-            div.innerHTML +=
-                '<i style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
-                mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '<br>' : '+');
-        }
-        return div;
-    };
-    legend.addTo(map);
-}
-
 // Function to determine circle color based on the magnitude 
 function chooseColor(magnitude) {
     switch(true) {
@@ -116,6 +95,27 @@ function getRadius(magnitude){
     }
 }  
 
+// Function for creating legend
+function createLegend(map){
+    // Create a legend
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+
+        var div = L.DomUtil.create('div', 'info legend'),
+            mag = [0, 1, 2, 3, 4, 5]
+
+        // loop and generate a label with a colored square for each interval
+                for (var i = 0; i < mag.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
+                mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '<br>' : '+');
+        }
+        return div;
+    };
+    legend.addTo(map);
+}
+
 // Function for creating GeoJSON layer
 function createGeoJsonLayer(data){
     var GeoJsonLayer = L.geoJson(data,{
@@ -155,7 +155,6 @@ d3.json(platesJsonPath).then(function(platesData){
     
     var GeoJSONUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
     d3.json(GeoJSONUrl).then(function(earthquakeData){
-        
         var GeoJsonLayer = createGeoJsonLayer(earthquakeData);
         var myMap = createMap(GeoJsonLayer,platesLayer);
         createLegend(myMap)

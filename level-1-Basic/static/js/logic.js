@@ -87,8 +87,7 @@ d3.json(url_earthquakes).then(function(data) {
         var div = L.DomUtil.create('div', 'info legend'),
             mag = [0, 1, 2, 3, 4, 5]
      
-        div.innerHTML += "<h4>Magnitude Level</h4><hr>"
-        // loop through our density intervals and generate a label with a colored square for each interval
+        //generate a label with a colored square for each interval
         for (var i = 0; i < mag.length; i++) {
             div.innerHTML +=
                 '<i style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
