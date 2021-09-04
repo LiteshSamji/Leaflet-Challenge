@@ -71,6 +71,23 @@ function createLegend(map){
     legend.addTo(map);
 }
 
+// Function to determine circle color based on the magnitude 
+function chooseColor(magnitude) {
+    switch(true) {
+      case magnitude > 5:
+        return "red";
+      case magnitude > 4:
+        return "orangered";
+      case magnitude > 3:
+        return "orange";
+      case magnitude > 2:
+        return "gold";
+      case magnitude > 1:
+        return "yellow";
+      default:
+        return "lightgreen";
+    }
+  }
 
 // Function for creating GeoJSON layer
 function createGeoJsonLayer(data){
